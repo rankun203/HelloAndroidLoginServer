@@ -1,0 +1,14 @@
+target/
+.settings/
+.idea/
+~/
+bower_components/
+
+*.class
+*.iml
+*.tmp
+*.log
+*.bak
+
+.project
+.classpath
