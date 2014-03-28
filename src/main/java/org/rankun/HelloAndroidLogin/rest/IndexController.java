@@ -35,9 +35,10 @@ public class IndexController {
     }
 
     @GET
-    @Path("/")
-    public void blank(@Context HttpServletResponse resp) throws IOException {
+    @Produces(MediaType.TEXT_PLAIN)
+    public String blank(@Context HttpServletResponse resp) throws IOException {
         resp.sendRedirect("/index");
+        return "success";
     }
 
 }
