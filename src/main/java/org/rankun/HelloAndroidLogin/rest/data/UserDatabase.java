@@ -2,8 +2,7 @@ package org.rankun.HelloAndroidLogin.rest.data;
 
 import org.rankun.HelloAndroidLogin.rest.bean.User;
 
-import java.util.Date;
-import java.util.HashMap;
+import java.util.*;
 
 
 public class UserDatabase
@@ -35,5 +34,28 @@ public class UserDatabase
     public static Date getLastModifiedById(Integer id)
     {
         return users.get(id).getLastModified();
+    }
+
+    public static boolean addUser(String username, String password) {
+        User user = new User();
+
+        int generatedId = users.size() + 1;
+
+        user.setId(generatedId);
+        user.setUsername(username);
+        user.setPassword(password);
+        user.setUri("/api/users/" + generatedId);
+        user.setLastModified(new Date());
+        users.put(generatedId, user);
+
+        return users.size() == generatedId;
+    }
+
+    public static List<User> getAllUsers() {
+        List<User> usersList = new LinkedList<User>();
+        for (Map.Entry<Integer, User> entry : users.entrySet()) {
+            usersList.add(entry.getValue());
+        }
+        return usersList;
     }
 }

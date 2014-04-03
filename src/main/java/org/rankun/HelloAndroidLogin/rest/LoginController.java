@@ -1,20 +1,20 @@
 package org.rankun.HelloAndroidLogin.rest;
 
 import org.rankun.HelloAndroidLogin.rest.bean.Info;
+import org.rankun.HelloAndroidLogin.rest.bean.User;
 import org.rankun.HelloAndroidLogin.rest.data.UserDatabase;
 
 import javax.annotation.security.PermitAll;
 import javax.annotation.security.RolesAllowed;
 import javax.ws.rs.*;
-import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Request;
 import javax.ws.rs.core.Response;
+import java.util.List;
 
 /**
  * Created by rankun203 on 14-3-28
  */
-@Path("/")
+@Path("/api")
 public class LoginController {
 
     @POST
@@ -28,10 +28,16 @@ public class LoginController {
     @GET
     @PermitAll
     @Path("/users/{id}")
-    public Response getUserById(@PathParam("id") int id,
-                                @Context Request req) {
-        Response.ResponseBuilder rb = Response.ok(UserDatabase.getUserById(id));
-        return rb.build();
+    @Produces(MediaType.APPLICATION_JSON)
+    public User getUserById(@PathParam("id") int id) {
+        return UserDatabase.getUserById(id);
+    }
+    @GET
+    @PermitAll
+    @Path("/users")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<User> getUsers() {
+        return UserDatabase.getAllUsers();
     }
 
     @PUT
@@ -41,5 +47,27 @@ public class LoginController {
         //Update the User resource
         UserDatabase.updateUser(id);
         return Response.status(200).build();
+    }
+    @POST
+    @RolesAllowed("ADMIN")
+    @Path("/users")
+    public Response addUser(@FormParam("username") String username,
+                            @FormParam("password") String password) {
+
+        System.out.println(username == null);
+        System.out.println(password == null);
+
+        if (null == username || null == password) {
+            return Response.status(404).build();
+        }
+
+        boolean success = UserDatabase.addUser(username, password);
+
+
+        if (success) {
+            return Response.status(200).build();
+        } else {
+            return Response.status(409).build();
+        }
     }
 }

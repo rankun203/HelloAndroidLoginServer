@@ -17,7 +17,7 @@ import java.util.List;
 /**
  * Created by rankun203 on 14-3-28
  */
-@Path("/")
+@Path("/api")
 public class IndexController {
 
     @GET
@@ -39,7 +39,7 @@ public class IndexController {
     @PermitAll
     @Produces(MediaType.TEXT_PLAIN)
     public String blank(@Context HttpServletResponse resp) throws IOException {
-        resp.sendRedirect("/index");
+        resp.sendRedirect("/api/index");
         return "success";
     }
 
