@@ -11,7 +11,7 @@ import javax.ws.rs.core.MediaType;
 /**
  * Created by rankun203 on 14-3-28
  */
-@Path("/api")
+@Path("/ap")
 public class LoginController {
 
     @POST

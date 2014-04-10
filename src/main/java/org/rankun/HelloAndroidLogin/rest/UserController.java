@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * Created by rankun203 on 14-4-3
  */
-@Path("/api/users")
+@Path("/ap/users")
 public class UserController {
     @GET
     @PermitAll

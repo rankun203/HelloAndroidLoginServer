@@ -17,7 +17,7 @@ import java.util.List;
 /**
  * Created by rankun203 on 14-3-28
  */
-@Path("/api")
+@Path("/ap")
 public class IndexController {
 
     @GET
@@ -28,7 +28,7 @@ public class IndexController {
 
         List<ApiSummary> apiList = new LinkedList<ApiSummary>();
         ApiSummary api1 = new ApiSummary("Authentication", "POST",
-                req.getRequestURL() + "/api/authenticate",
+                "/api/authenticate",
                 null);
 
         apiList.add(api1);
