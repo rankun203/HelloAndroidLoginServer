@@ -1,46 +1,22 @@
 package org.rankun.HelloAndroidLogin.rest.bean;
 
+import java.util.List;
+
 /**
  * Created by rankun203 on 14-3-28
  */
 public class ApiSummary {
     private String name;
     private String method;
+    private String group;
     private String url;
-    private Param params;
+    private List<String> params;
 
-    public class Param {
-        private String key;
-        private String value;
-
-        public Param(){}
-        public Param(String key, String value) {
-            this.key = key;
-            this.value = value;
-        }
-
-        public String getKey() {
-            return key;
-        }
-
-        public void setKey(String key) {
-            this.key = key;
-        }
-
-        public String getValue() {
-            return value;
-        }
-
-        public void setValue(String value) {
-            this.value = value;
-        }
-    }
     public ApiSummary(){}
-    public ApiSummary(String name, String method, String url, Param params) {
+    public ApiSummary(String name, String method, String url) {
         this.name = name;
         this.method = method;
         this.url = url;
-        this.params = params;
     }
 
     public String getName() {
@@ -67,11 +43,19 @@ public class ApiSummary {
         this.url = url;
     }
 
-    public Param getParams() {
+    public List<String> getParams() {
         return params;
     }
 
-    public void setParams(Param params) {
+    public void setParams(List<String> params) {
         this.params = params;
+    }
+
+    public String getGroup() {
+        return group;
+    }
+
+    public void setGroup(String group) {
+        this.group = group;
     }
 }

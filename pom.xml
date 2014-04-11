@@ -23,6 +23,10 @@
             <id>jboss</id>
             <url>http://repository.jboss.org/nexus/content/groups/public</url>
         </repository>
+        <repository>
+            <id>htmleasy</id>
+            <url>http://htmleasy-maven.googlecode.com/svn/trunk/</url>
+        </repository>
     </repositories>
     <pluginRepositories>
         <pluginRepository>
@@ -84,18 +88,11 @@
             <version>3.0.6.Final</version>
         </dependency>
 
-        <!-- Jetty -->
         <dependency>
-            <groupId>org.eclipse.jetty</groupId>
-            <artifactId>jetty-servlet</artifactId>
-            <version>7.6.0.v20120127</version>
+            <groupId>com.googlecode.htmleasy</groupId>
+            <artifactId>htmleasy</artifactId>
+            <version>0.7</version>
         </dependency>
-        <dependency>
-            <groupId>org.eclipse.jetty</groupId>
-            <artifactId>jetty-webapp</artifactId>
-            <version>7.6.0.v20120127</version>
-        </dependency>
-
 
     </dependencies>
 
